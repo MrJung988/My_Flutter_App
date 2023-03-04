@@ -13,6 +13,7 @@ class _HomeState extends State<Home> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Home'),
+        automaticallyImplyLeading: false,
         backgroundColor: Colors.orange[700],
       ),
       body: Center(
@@ -21,23 +22,39 @@ class _HomeState extends State<Home> {
       bottomNavigationBar: BottomNavigationBar(
         items: [
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
+            backgroundColor: Colors.grey[400],
+            icon: Icon(
+              Icons.home,
+              color: Colors.black,
+            ),
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'About',
+            icon: Icon(
+              Icons.search,
+              color: Colors.black,
+            ),
+            label: 'Search',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Transaction',
+            icon: Icon(
+              Icons.calendar_month,
+              color: Colors.black,
+            ),
+            label: 'Watch',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Payments',
+            icon: Icon(
+              Icons.newspaper,
+              color: Colors.black,
+            ),
+            label: 'Feed',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
+            icon: Icon(
+              Icons.menu,
+              color: Colors.black,
+            ),
             label: 'More',
           ),
         ],
