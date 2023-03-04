@@ -15,8 +15,8 @@ class _LoginState extends State<Login> {
       body: SingleChildScrollView(
         child: Container(
           color: Colors.white,
-          margin: EdgeInsets.symmetric(horizontal: 10.0, vertical: 80.0),
-          height: 330.0,
+          margin: EdgeInsets.symmetric(horizontal: 10.0, vertical: 200.0),
+          height: 410.0,
           child: Center(
             child: Column(
               children: [
@@ -104,7 +104,9 @@ class _LoginState extends State<Login> {
                   child: Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/home');
+                      },
                       style: ElevatedButton.styleFrom(
                         primary: Colors.orange[700],
                       ),
