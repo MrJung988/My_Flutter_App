@@ -1,4 +1,6 @@
+import 'package:draggable_fab/draggable_fab.dart';
 import 'package:flutter/material.dart';
+import 'package:my_flutter_first_app/widgets/MainContent.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -106,9 +108,7 @@ class _HomeState extends State<Home> {
           ],
         ),
       ),
-      body: Center(
-        child: Text('Hello home'),
-      ),
+      body: MainContent(),
       bottomNavigationBar: BottomNavigationBar(
         items: [
           BottomNavigationBarItem(
@@ -149,6 +149,14 @@ class _HomeState extends State<Home> {
           ),
         ],
       ),
+      floatingActionButton: DraggableFab(
+        child: FloatingActionButton(
+          onPressed: () {},
+          child: Icon(Icons.message),
+          backgroundColor: Colors.orange,
+        ),
+      ),
+      // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
 }
