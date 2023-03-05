@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 
 class PrimaryTextForm extends StatelessWidget {
   String hintText;
+  IconData prefixIcon;
+
   PrimaryTextForm({
     required this.hintText,
+    required this.prefixIcon,
   });
 
   @override
@@ -11,7 +14,7 @@ class PrimaryTextForm extends StatelessWidget {
     return TextFormField(
       decoration: InputDecoration(
         prefixIcon: Icon(
-          Icons.mail,
+          prefixIcon,
           color: Colors.orange[700],
           size: 20,
         ),
@@ -21,6 +24,11 @@ class PrimaryTextForm extends StatelessWidget {
           borderRadius: BorderRadius.circular(10.0),
         ),
         hintText: hintText,
+        suffixIcon: Icon(
+          Icons.remove_red_eye,
+          color: Colors.black,
+          size: 20,
+        ),
       ),
     );
   }

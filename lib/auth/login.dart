@@ -43,12 +43,14 @@ class _LoginState extends State<Login> {
                   padding: EdgeInsets.all(10.0),
                   child: PrimaryTextForm(
                     hintText: 'Enter your email',
+                    prefixIcon: Icons.email,
                   ),
                 ),
                 Padding(
                   padding: EdgeInsets.all(10.0),
                   child: PrimaryTextForm(
                     hintText: 'Enter your password',
+                    prefixIcon: Icons.lock,
                   ),
                 ),
                 Row(

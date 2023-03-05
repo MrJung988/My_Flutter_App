@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_flutter_first_app/widgets/PrimaryTextForm.dart';
 
 class Register extends StatefulWidget {
   const Register({super.key});
@@ -50,124 +51,41 @@ class _RegisterState extends State<Register> {
                 ),
                 Padding(
                   padding: EdgeInsets.all(10.0),
-                  child: TextFormField(
-                    decoration: InputDecoration(
-                      prefixIcon: Icon(
-                        Icons.person,
-                        color: Colors.orange[700],
-                        size: 20,
-                      ),
-                      fillColor: Colors.grey[100],
-                      filled: true,
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10.0),
-                      ),
-                      hintText: 'Enter your first name',
-                    ),
+                  child: PrimaryTextForm(
+                    hintText: 'Enter your first name',
+                    prefixIcon: Icons.person,
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.all(10.0),
-                  child: TextFormField(
-                    decoration: InputDecoration(
-                      prefixIcon: Icon(
-                        Icons.person,
-                        color: Colors.orange[700],
-                        size: 20,
-                      ),
-                      fillColor: Colors.grey[100],
-                      filled: true,
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10.0),
-                      ),
+                    padding: EdgeInsets.all(10.0),
+                    child: PrimaryTextForm(
                       hintText: 'Enter your last name',
-                    ),
-                  ),
-                ),
+                      prefixIcon: Icons.person,
+                    )),
                 Padding(
-                  padding: EdgeInsets.all(10.0),
-                  child: TextFormField(
-                    obscureText: true,
-                    decoration: InputDecoration(
-                      prefixIcon: Icon(
-                        Icons.mail,
-                        color: Colors.orange[700],
-                        size: 20,
-                      ),
-                      fillColor: Colors.grey[100],
-                      filled: true,
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10.0),
-                      ),
+                    padding: EdgeInsets.all(10.0),
+                    child: PrimaryTextForm(
                       hintText: 'Enter your email',
-                    ),
-                  ),
-                ),
+                      prefixIcon: Icons.email,
+                    )),
                 Padding(
-                  padding: EdgeInsets.all(10.0),
-                  child: TextFormField(
-                    obscureText: true,
-                    decoration: InputDecoration(
-                      prefixIcon: Icon(
-                        Icons.phone_android,
-                        color: Colors.orange[700],
-                        size: 20,
-                      ),
-                      fillColor: Colors.grey[100],
-                      filled: true,
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10.0),
-                      ),
+                    padding: EdgeInsets.all(10.0),
+                    child: PrimaryTextForm(
                       hintText: 'Enter your mobile',
-                    ),
+                      prefixIcon: Icons.phone_android,
+                    )),
+                Padding(
+                  padding: EdgeInsets.all(10.0),
+                  child: PrimaryTextForm(
+                    hintText: 'Create a new password',
+                    prefixIcon: Icons.lock,
                   ),
                 ),
                 Padding(
                   padding: EdgeInsets.all(10.0),
-                  child: TextFormField(
-                    obscureText: true,
-                    decoration: InputDecoration(
-                      prefixIcon: Icon(
-                        Icons.lock,
-                        color: Colors.orange[700],
-                        size: 20,
-                      ),
-                      fillColor: Colors.grey[100],
-                      filled: true,
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10.0),
-                      ),
-                      hintText: 'Create a new password',
-                      suffixIcon: Icon(
-                        Icons.remove_red_eye,
-                        color: Colors.black,
-                        size: 20,
-                      ),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.all(10.0),
-                  child: TextFormField(
-                    obscureText: true,
-                    decoration: InputDecoration(
-                      prefixIcon: Icon(
-                        Icons.lock,
-                        color: Colors.orange[700],
-                        size: 20,
-                      ),
-                      fillColor: Colors.grey[100],
-                      filled: true,
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10.0),
-                      ),
-                      hintText: 'Re-enter your password',
-                      suffixIcon: Icon(
-                        Icons.remove_red_eye,
-                        color: Colors.black,
-                        size: 20,
-                      ),
-                    ),
+                  child: PrimaryTextForm(
+                    hintText: 'Re-enter your password',
+                    prefixIcon: Icons.lock,
                   ),
                 ),
                 SizedBox(
