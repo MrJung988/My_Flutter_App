@@ -3,10 +3,12 @@ import 'package:flutter/material.dart';
 class PrimaryTextForm extends StatelessWidget {
   String hintText;
   IconData prefixIcon;
+  IconData? suffixIcon;
 
   PrimaryTextForm({
     required this.hintText,
     required this.prefixIcon,
+    this.suffixIcon,
   });
 
   @override
@@ -25,7 +27,7 @@ class PrimaryTextForm extends StatelessWidget {
         ),
         hintText: hintText,
         suffixIcon: Icon(
-          Icons.remove_red_eye,
+          suffixIcon,
           color: Colors.black,
           size: 20,
         ),

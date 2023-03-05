@@ -51,6 +51,7 @@ class _LoginState extends State<Login> {
                   child: PrimaryTextForm(
                     hintText: 'Enter your password',
                     prefixIcon: Icons.lock,
+                    suffixIcon: Icons.remove_red_eye,
                   ),
                 ),
                 Row(

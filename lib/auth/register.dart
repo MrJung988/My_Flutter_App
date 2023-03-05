@@ -79,6 +79,7 @@ class _RegisterState extends State<Register> {
                   child: PrimaryTextForm(
                     hintText: 'Create a new password',
                     prefixIcon: Icons.lock,
+                    suffixIcon: Icons.remove_red_eye,
                   ),
                 ),
                 Padding(
@@ -86,6 +87,7 @@ class _RegisterState extends State<Register> {
                   child: PrimaryTextForm(
                     hintText: 'Re-enter your password',
                     prefixIcon: Icons.lock,
+                    suffixIcon: Icons.remove_red_eye,
                   ),
                 ),
                 SizedBox(
