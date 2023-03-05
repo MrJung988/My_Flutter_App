@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_flutter_first_app/widgets/PrimaryTextForm.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -40,48 +41,18 @@ class _LoginState extends State<Login> {
                 ),
                 Padding(
                   padding: EdgeInsets.all(10.0),
-                  child: TextFormField(
-                    decoration: InputDecoration(
-                      prefixIcon: Icon(
-                        Icons.mail,
-                        color: Colors.orange[700],
-                        size: 20,
-                      ),
-                      fillColor: Colors.grey[100],
-                      filled: true,
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10.0),
-                      ),
-                      hintText: 'Enter your email',
-                    ),
+                  child: PrimaryTextForm(
+                    hintText: 'Enter your email',
                   ),
                 ),
                 Padding(
                   padding: EdgeInsets.all(10.0),
-                  child: TextFormField(
-                    obscureText: true,
-                    decoration: InputDecoration(
-                      prefixIcon: Icon(
-                        Icons.lock,
-                        color: Colors.orange[700],
-                        size: 20,
-                      ),
-                      fillColor: Colors.grey[100],
-                      filled: true,
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10.0),
-                      ),
-                      hintText: 'Enter your password',
-                      suffixIcon: Icon(
-                        Icons.remove_red_eye,
-                        color: Colors.black,
-                        size: 20,
-                      ),
-                    ),
+                  child: PrimaryTextForm(
+                    hintText: 'Enter your password',
                   ),
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Padding(
                       padding:
@@ -105,7 +76,8 @@ class _LoginState extends State<Login> {
                     padding: const EdgeInsets.all(10.0),
                     child: ElevatedButton(
                       onPressed: () {
-                        Navigator.pushNamed(context, '/home');
+                        Navigator.of(context).pushNamedAndRemoveUntil(
+                            '/home', (Route<dynamic> route) => false);
                       },
                       style: ElevatedButton.styleFrom(
                         primary: Colors.orange[700],

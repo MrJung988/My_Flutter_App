@@ -27,16 +27,21 @@ class _HomeState extends State<Home> {
                 children: [
                   CircleAvatar(
                     radius: 50,
-                    backgroundImage: NetworkImage(
-                        'https://tabib.ae/uploads/profile/free-profile-photo-whatsapp-4_1617693292_1625640135.png'),
+                    backgroundImage: AssetImage('assets/lm10.jpg'),
                   ),
                   Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 15, vertical: 30),
+                    padding: EdgeInsets.symmetric(horizontal: 0, vertical: 30),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text('Full Name'),
+                        Text(
+                          'Lionel Messi',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20.0,
+                          ),
+                        ),
                         Row(
                           children: [
                             Icon(Icons.phone_android),
@@ -44,7 +49,10 @@ class _HomeState extends State<Home> {
                           ],
                         ),
                         Row(
-                          children: [Icon(Icons.email), Text('abc@gmail.com')],
+                          children: [
+                            Icon(Icons.email),
+                            Text('leo.messi@gmail.com')
+                          ],
                         )
                       ],
                     ),
@@ -91,7 +99,8 @@ class _HomeState extends State<Home> {
               leading: Icon(Icons.logout),
               title: Text('Logout'),
               onTap: () {
-                Navigator.pop(context);
+                Navigator.of(context).pushNamedAndRemoveUntil(
+                    '/login', (Route<dynamic> route) => false);
               },
             ),
           ],
