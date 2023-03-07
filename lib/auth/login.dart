@@ -9,7 +9,23 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  final _formKey = GlobalKey();
+
+  var email = "";
+  var password = "";
+
+  // Create a text controller and use it to retrieve it to retrieve the current value of the TextField.
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+
   @override
+  void dispose() {
+    // Clean up the controller when the widget is disposed.
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[400],
