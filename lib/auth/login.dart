@@ -9,7 +9,7 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-  final _formKey = GlobalKey();
+  final _formKey = GlobalKey<FormState>();
 
   var email = "";
   var password = "";
@@ -111,8 +111,14 @@ class _LoginState extends State<Login> {
                       padding: const EdgeInsets.all(10.0),
                       child: ElevatedButton(
                         onPressed: () {
-                          Navigator.of(context).pushNamedAndRemoveUntil(
-                              '/home', (Route<dynamic> route) => false);
+                          if (_formKey.currentState?.validate() == true) {
+                            setState(() {
+                              email = emailController.text;
+                              password = passwordController.text;
+                            });
+                            Navigator.of(context).pushNamedAndRemoveUntil(
+                                '/home', (Route<dynamic> route) => false);
+                          }
                         },
                         style: ElevatedButton.styleFrom(
                           primary: Colors.orange[700],
