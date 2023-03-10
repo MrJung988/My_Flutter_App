@@ -63,6 +63,13 @@ class _LoginState extends State<Login> {
                       hintText: 'Enter your email',
                       prefixIcon: Icons.email,
                       controller: emailController,
+                      validator: (value) {
+                        if (value?.isEmpty ?? true) {
+                          return 'Please enter your email';
+                        } else if (!value!.contains('@')) {
+                          return 'Please enter a valid email';
+                        }
+                      },
                     ),
                   ),
                   Padding(
@@ -72,6 +79,11 @@ class _LoginState extends State<Login> {
                       prefixIcon: Icons.lock,
                       suffixIcon: Icons.remove_red_eye,
                       controller: passwordController,
+                      validator: (value) {
+                        if (value?.isEmpty ?? true) {
+                          return 'Please enter your password';
+                        }
+                      },
                     ),
                   ),
                   Row(

@@ -9,7 +9,7 @@ class Register extends StatefulWidget {
 }
 
 class _RegisterState extends State<Register> {
-  final _formKey = GlobalKey();
+  final _formKey = GlobalKey<FormState>();
 
   var first_name = "";
   var last_name = "";
@@ -85,6 +85,11 @@ class _RegisterState extends State<Register> {
                       hintText: 'Enter your first name',
                       prefixIcon: Icons.person,
                       controller: firstNameController,
+                      validator: (value) {
+                        if (value?.isEmpty ?? true) {
+                          return 'Please enter your first name';
+                        }
+                      },
                     ),
                   ),
                   Padding(
@@ -93,6 +98,11 @@ class _RegisterState extends State<Register> {
                         hintText: 'Enter your last name',
                         controller: lastNameController,
                         prefixIcon: Icons.person,
+                        validator: (value) {
+                          if (value?.isEmpty ?? true) {
+                            return 'Please enter your last name';
+                          }
+                        },
                       )),
                   Padding(
                       padding: EdgeInsets.all(10.0),
@@ -100,6 +110,13 @@ class _RegisterState extends State<Register> {
                         hintText: 'Enter your email',
                         controller: emailController,
                         prefixIcon: Icons.email,
+                        validator: (value) {
+                          if (value?.isEmpty ?? true) {
+                            return 'Please enter your email';
+                          } else if (!value!.contains('@')) {
+                            return 'Please enter a valid email';
+                          }
+                        },
                       )),
                   Padding(
                       padding: EdgeInsets.all(10.0),
@@ -107,6 +124,11 @@ class _RegisterState extends State<Register> {
                         hintText: 'Enter your mobile',
                         controller: phoneController,
                         prefixIcon: Icons.phone_android,
+                        validator: (value) {
+                          if (value?.isEmpty ?? true) {
+                            return 'Please enter your phone';
+                          }
+                        },
                       )),
                   Padding(
                     padding: EdgeInsets.all(10.0),
@@ -115,6 +137,11 @@ class _RegisterState extends State<Register> {
                       controller: passwordController,
                       prefixIcon: Icons.lock,
                       suffixIcon: Icons.remove_red_eye,
+                      validator: (value) {
+                        if (value?.isEmpty ?? true) {
+                          return 'Please enter your new password';
+                        }
+                      },
                     ),
                   ),
                   Padding(
@@ -124,6 +151,11 @@ class _RegisterState extends State<Register> {
                       controller: confirmPasswordController,
                       prefixIcon: Icons.lock,
                       suffixIcon: Icons.remove_red_eye,
+                      validator: (value) {
+                        if (value?.isEmpty ?? true) {
+                          return 'Please enter your confirm password';
+                        }
+                      },
                     ),
                   ),
                   SizedBox(
@@ -131,7 +163,18 @@ class _RegisterState extends State<Register> {
                     child: Padding(
                       padding: const EdgeInsets.all(10.0),
                       child: ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          if (_formKey.currentState?.validate() == true) {
+                            setState(() {
+                              first_name = firstNameController.text;
+                              last_name = lastNameController.text;
+                              email = emailController.text;
+                              phone = phoneController.text;
+                              password = passwordController.text;
+                              confirm_Password = confirmPasswordController.text;
+                            });
+                          }
+                        },
                         style: ElevatedButton.styleFrom(
                           primary: Colors.orange[700],
                         ),

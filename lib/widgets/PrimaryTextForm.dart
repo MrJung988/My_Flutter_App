@@ -5,12 +5,14 @@ class PrimaryTextForm extends StatelessWidget {
   IconData prefixIcon;
   IconData? suffixIcon;
   TextEditingController controller;
+  FormFieldValidator validator;
 
   PrimaryTextForm({
     required this.hintText,
     required this.prefixIcon,
     this.suffixIcon,
     required this.controller,
+    required this.validator,
   });
 
   @override
@@ -39,12 +41,7 @@ class PrimaryTextForm extends StatelessWidget {
         ),
       ),
       controller: controller,
-      validator: (value) {
-        if (value == null || value.isEmpty) {
-          return 'Please enter email';
-        }
-        return null;
-      },
+      validator: validator,
     );
   }
 }
