@@ -30,107 +30,112 @@ class _LoginState extends State<Login> {
     return Scaffold(
       backgroundColor: Colors.grey[400],
       body: SingleChildScrollView(
-        child: Container(
-          color: Colors.white,
-          margin: EdgeInsets.symmetric(horizontal: 10.0, vertical: 200.0),
-          height: 410.0,
-          child: Center(
-            child: Column(
-              children: [
-                Padding(
-                  padding: EdgeInsets.all(10.0),
-                  child: Container(
-                    height: 60,
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                      boxShadow: [
-                        BoxShadow(
-                          color: Color.fromARGB(255, 230, 227, 227),
-                          blurRadius: 0.0,
+        child: Form(
+          key: _formKey,
+          child: Container(
+            color: Colors.white,
+            margin: EdgeInsets.symmetric(horizontal: 10.0, vertical: 200.0),
+            height: 410.0,
+            child: Center(
+              child: Column(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.all(10.0),
+                    child: Container(
+                      height: 60,
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                        boxShadow: [
+                          BoxShadow(
+                            color: Color.fromARGB(255, 230, 227, 227),
+                            blurRadius: 0.0,
+                          ),
+                        ],
+                        image: DecorationImage(
+                          image: AssetImage('assets/logo.jpg'),
                         ),
-                      ],
-                      image: DecorationImage(
-                        image: AssetImage('assets/logo.jpg'),
                       ),
                     ),
                   ),
-                ),
-                Padding(
-                  padding: EdgeInsets.all(10.0),
-                  child: PrimaryTextForm(
-                    hintText: 'Enter your email',
-                    prefixIcon: Icons.email,
+                  Padding(
+                    padding: EdgeInsets.all(10.0),
+                    child: PrimaryTextForm(
+                      hintText: 'Enter your email',
+                      prefixIcon: Icons.email,
+                      controller: emailController,
+                    ),
                   ),
-                ),
-                Padding(
-                  padding: EdgeInsets.all(10.0),
-                  child: PrimaryTextForm(
-                    hintText: 'Enter your password',
-                    prefixIcon: Icons.lock,
-                    suffixIcon: Icons.remove_red_eye,
+                  Padding(
+                    padding: EdgeInsets.all(10.0),
+                    child: PrimaryTextForm(
+                      hintText: 'Enter your password',
+                      prefixIcon: Icons.lock,
+                      suffixIcon: Icons.remove_red_eye,
+                      controller: passwordController,
+                    ),
                   ),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Padding(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 10.0, vertical: 0.0),
-                      child: TextButton(
-                        onPressed: () {},
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 10.0, vertical: 0.0),
+                        child: TextButton(
+                          onPressed: () {},
+                          child: Text(
+                            'Forgot Password ?',
+                            style: TextStyle(
+                              color: Colors.blue[800],
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    width: double.infinity,
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: ElevatedButton(
+                        onPressed: () {
+                          Navigator.of(context).pushNamedAndRemoveUntil(
+                              '/home', (Route<dynamic> route) => false);
+                        },
+                        style: ElevatedButton.styleFrom(
+                          primary: Colors.orange[700],
+                        ),
                         child: Text(
-                          'Forgot Password ?',
+                          'Login',
+                          style: TextStyle(
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "Don't have an account yet?",
+                      ),
+                      TextButton(
+                        onPressed: () {
+                          Navigator.pushNamed(context, '/register');
+                        },
+                        child: Text(
+                          'Register Now',
                           style: TextStyle(
                             color: Colors.blue[800],
                             fontWeight: FontWeight.bold,
                           ),
                         ),
                       ),
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  width: double.infinity,
-                  child: Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: ElevatedButton(
-                      onPressed: () {
-                        Navigator.of(context).pushNamedAndRemoveUntil(
-                            '/home', (Route<dynamic> route) => false);
-                      },
-                      style: ElevatedButton.styleFrom(
-                        primary: Colors.orange[700],
-                      ),
-                      child: Text(
-                        'Login',
-                        style: TextStyle(
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      "Don't have an account yet?",
-                    ),
-                    TextButton(
-                      onPressed: () {
-                        Navigator.pushNamed(context, '/register');
-                      },
-                      child: Text(
-                        'Register Now',
-                        style: TextStyle(
-                          color: Colors.blue[800],
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                  ],
-                )
-              ],
+                    ],
+                  )
+                ],
+              ),
             ),
           ),
         ),

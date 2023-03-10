@@ -4,11 +4,13 @@ class PrimaryTextForm extends StatelessWidget {
   String hintText;
   IconData prefixIcon;
   IconData? suffixIcon;
+  TextEditingController controller;
 
   PrimaryTextForm({
     required this.hintText,
     required this.prefixIcon,
     this.suffixIcon,
+    required this.controller,
   });
 
   @override
@@ -25,6 +27,10 @@ class PrimaryTextForm extends StatelessWidget {
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10.0),
         ),
+        errorStyle: TextStyle(
+          color: Colors.redAccent,
+          fontSize: 15,
+        ),
         hintText: hintText,
         suffixIcon: Icon(
           suffixIcon,
@@ -32,6 +38,13 @@ class PrimaryTextForm extends StatelessWidget {
           size: 20,
         ),
       ),
+      controller: controller,
+      validator: (value) {
+        if (value == null || value.isEmpty) {
+          return 'Please enter email';
+        }
+        return null;
+      },
     );
   }
 }
