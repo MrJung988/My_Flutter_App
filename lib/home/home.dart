@@ -1,6 +1,8 @@
 import 'package:draggable_fab/draggable_fab.dart';
 import 'package:flutter/material.dart';
-import 'package:my_flutter_first_app/widgets/MainContent.dart';
+import 'package:my_flutter_first_app/home/change_password.dart';
+import 'package:my_flutter_first_app/home/dashboard.dart';
+import 'package:my_flutter_first_app/home/profile.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -10,6 +12,20 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  int _selectedIndex = 0;
+  static List _widgetOptions = [
+    Home(),
+    Dashboard(),
+    Profile(),
+    ChangePassword(),
+  ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -108,46 +124,49 @@ class _HomeState extends State<Home> {
           ],
         ),
       ),
-      body: MainContent(),
+      body: _widgetOptions.elementAt(_selectedIndex),
       bottomNavigationBar: BottomNavigationBar(
         items: [
           BottomNavigationBarItem(
             backgroundColor: Colors.grey[400],
             icon: Icon(
               Icons.home,
-              color: Colors.black,
+              // color: Colors.black,
             ),
             label: 'Home',
           ),
           BottomNavigationBarItem(
             icon: Icon(
               Icons.search,
-              color: Colors.black,
+              // color: Colors.black,
             ),
             label: 'Search',
           ),
           BottomNavigationBarItem(
             icon: Icon(
               Icons.calendar_month,
-              color: Colors.black,
+              // color: Colors.black,
             ),
             label: 'Watch',
           ),
           BottomNavigationBarItem(
             icon: Icon(
               Icons.newspaper,
-              color: Colors.black,
+              // color: Colors.black,
             ),
             label: 'Feed',
           ),
           BottomNavigationBarItem(
             icon: Icon(
               Icons.more,
-              color: Colors.black,
+              // color: Colors.black,
             ),
             label: 'More',
           ),
         ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: Colors.amber[800],
+        onTap: _onItemTapped,
       ),
       floatingActionButton: DraggableFab(
         child: FloatingActionButton(

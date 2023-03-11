@@ -18,6 +18,11 @@ class _LoginState extends State<Login> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
+  userLogin() {
+    Navigator.of(context)
+        .pushNamedAndRemoveUntil('/home', (Route<dynamic> route) => false);
+  }
+
   @override
   void dispose() {
     // Clean up the controller when the widget is disposed.
@@ -116,8 +121,8 @@ class _LoginState extends State<Login> {
                               email = emailController.text;
                               password = passwordController.text;
                             });
-                            Navigator.of(context).pushNamedAndRemoveUntil(
-                                '/home', (Route<dynamic> route) => false);
+
+                            userLogin();
                           }
                         },
                         style: ElevatedButton.styleFrom(
