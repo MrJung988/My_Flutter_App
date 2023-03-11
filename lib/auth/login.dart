@@ -13,7 +13,7 @@ class _LoginState extends State<Login> {
 
   var email = "";
   var password = "";
-  bool tempObscureText = false;
+  bool tempObscureText = true;
 
   // Create a text controller and use it to retrieve it to retrieve the current value of the TextField.
   final emailController = TextEditingController();
@@ -87,10 +87,12 @@ class _LoginState extends State<Login> {
                       suffixIcon: InkWell(
                         onTap: () {
                           setState(() {
-                            tempObscureText = false;
+                            tempObscureText = !tempObscureText;
                           });
                         },
-                        child: Icon(Icons.remove_red_eye),
+                        child: Icon(tempObscureText
+                            ? Icons.visibility
+                            : Icons.visibility_off),
                       ),
                       controller: passwordController,
                       validator: (value) {
