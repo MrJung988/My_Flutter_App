@@ -3,9 +3,10 @@ import 'package:flutter/material.dart';
 class PrimaryTextForm extends StatelessWidget {
   String hintText;
   IconData prefixIcon;
-  IconData? suffixIcon;
+  InkWell? suffixIcon;
   TextEditingController controller;
   FormFieldValidator validator;
+  bool obscureText;
 
   PrimaryTextForm({
     required this.hintText,
@@ -13,11 +14,13 @@ class PrimaryTextForm extends StatelessWidget {
     this.suffixIcon,
     required this.controller,
     required this.validator,
+    this.obscureText = false,
   });
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      obscureText: obscureText,
       decoration: InputDecoration(
         prefixIcon: Icon(
           prefixIcon,
@@ -34,11 +37,7 @@ class PrimaryTextForm extends StatelessWidget {
           fontSize: 15,
         ),
         hintText: hintText,
-        suffixIcon: Icon(
-          suffixIcon,
-          color: Colors.black,
-          size: 20,
-        ),
+        suffixIcon: suffixIcon,
       ),
       controller: controller,
       validator: validator,

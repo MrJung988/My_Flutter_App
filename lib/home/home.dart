@@ -14,7 +14,6 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   int _selectedIndex = 0;
   static List _widgetOptions = [
-    Home(),
     Dashboard(),
     Profile(),
     ChangePassword(),
@@ -124,7 +123,9 @@ class _HomeState extends State<Home> {
           ],
         ),
       ),
-      body: _widgetOptions.elementAt(_selectedIndex),
+      // body: Container(child: null),
+      // body: Profile(),
+      body: _widgetOptions[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
         items: [
           BottomNavigationBarItem(
@@ -136,37 +137,43 @@ class _HomeState extends State<Home> {
             label: 'Home',
           ),
           BottomNavigationBarItem(
+            backgroundColor: Colors.grey[400],
             icon: Icon(
-              Icons.search,
+              Icons.people,
               // color: Colors.black,
             ),
-            label: 'Search',
+            label: 'Profile',
           ),
           BottomNavigationBarItem(
+            backgroundColor: Colors.grey[400],
             icon: Icon(
-              Icons.calendar_month,
+              Icons.settings,
               // color: Colors.black,
             ),
-            label: 'Watch',
+            label: 'Settings',
           ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.newspaper,
-              // color: Colors.black,
-            ),
-            label: 'Feed',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.more,
-              // color: Colors.black,
-            ),
-            label: 'More',
-          ),
+          // BottomNavigationBarItem(
+          //   backgroundColor: Colors.grey[400],
+          //   icon: Icon(
+          //     Icons.newspaper,
+          //     // color: Colors.black,
+          //   ),
+          //   label: 'Feed',
+          // ),
+          // BottomNavigationBarItem(
+          //   backgroundColor: Colors.grey[400],
+          //   icon: Icon(
+          //     Icons.more,
+          //     // color: Colors.black,
+          //   ),
+          //   label: 'More',
+          // ),
         ],
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.amber[800],
-        onTap: _onItemTapped,
+        onTap: (value) {
+          _onItemTapped(value);
+        },
       ),
       floatingActionButton: DraggableFab(
         child: FloatingActionButton(
