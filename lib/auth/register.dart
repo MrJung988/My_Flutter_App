@@ -17,6 +17,8 @@ class _RegisterState extends State<Register> {
   var phone = "";
   var password = "";
   var confirm_Password = "";
+  bool tempObscureTextForPassword = true;
+  bool tempObscureTextForConfirmPassword = true;
 
   // Controller
   final firstNameController = TextEditingController();
@@ -133,11 +135,21 @@ class _RegisterState extends State<Register> {
                   Padding(
                     padding: EdgeInsets.all(10.0),
                     child: PrimaryTextForm(
-                      obscureText: true,
+                      obscureText: tempObscureTextForPassword,
                       hintText: 'Create a new password',
                       controller: passwordController,
                       prefixIcon: Icons.lock,
-                      // suffixIcon: Icons.remove_red_eye,
+                      suffixIcon: InkWell(
+                        onTap: () {
+                          setState(() {
+                            tempObscureTextForPassword =
+                                !tempObscureTextForPassword;
+                          });
+                        },
+                        child: Icon(tempObscureTextForPassword
+                            ? Icons.visibility
+                            : Icons.visibility_off),
+                      ),
                       validator: (value) {
                         if (value?.isEmpty ?? true) {
                           return 'Please enter your new password';
@@ -148,10 +160,21 @@ class _RegisterState extends State<Register> {
                   Padding(
                     padding: EdgeInsets.all(10.0),
                     child: PrimaryTextForm(
-                      obscureText: true,
+                      obscureText: tempObscureTextForConfirmPassword,
                       hintText: 'Re-enter your password',
                       controller: confirmPasswordController,
                       prefixIcon: Icons.lock,
+                      suffixIcon: InkWell(
+                        onTap: () {
+                          setState(() {
+                            tempObscureTextForConfirmPassword =
+                                !tempObscureTextForConfirmPassword;
+                          });
+                        },
+                        child: Icon(tempObscureTextForConfirmPassword
+                            ? Icons.visibility
+                            : Icons.visibility_off),
+                      ),
                       // suffixIcon: Icons.remove_red_eye,
                       validator: (value) {
                         if (value?.isEmpty ?? true) {
