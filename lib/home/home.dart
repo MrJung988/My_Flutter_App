@@ -123,8 +123,6 @@ class _HomeState extends State<Home> {
           ],
         ),
       ),
-      // body: Container(child: null),
-      // body: Profile(),
       body: _widgetOptions[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
         items: [
@@ -142,15 +140,15 @@ class _HomeState extends State<Home> {
               Icons.people,
               // color: Colors.black,
             ),
-            label: 'Profile',
+            label: 'My Profile',
           ),
           BottomNavigationBarItem(
             backgroundColor: Colors.grey[400],
             icon: Icon(
-              Icons.settings,
+              Icons.password,
               // color: Colors.black,
             ),
-            label: 'Settings',
+            label: 'Change Password',
           ),
           // BottomNavigationBarItem(
           //   backgroundColor: Colors.grey[400],
