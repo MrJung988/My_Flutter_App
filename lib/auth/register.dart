@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:my_flutter_first_app/widgets/PrimaryTextForm.dart';
 
@@ -38,6 +39,18 @@ class _RegisterState extends State<Register> {
     passwordController.dispose();
     confirmPasswordController.dispose();
     super.dispose();
+  }
+
+  registration() async {
+    if (password == confirm_Password) {
+      try {
+        await FirebaseAuth.instance
+            .createUserWithEmailAndPassword(email: email, password: password);
+            
+      } catch (e) {}
+    } else {
+      print("Password and confirm password doesn't match");
+    }
   }
 
   Widget build(BuildContext context) {
@@ -198,6 +211,8 @@ class _RegisterState extends State<Register> {
                               password = passwordController.text;
                               confirm_Password = confirmPasswordController.text;
                             });
+
+                            registration();
                           }
                         },
                         style: ElevatedButton.styleFrom(
