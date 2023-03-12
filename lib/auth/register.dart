@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:my_flutter_first_app/auth/login.dart';
 import 'package:my_flutter_first_app/widgets/PrimaryTextForm.dart';
 
 class Register extends StatefulWidget {
@@ -44,12 +45,69 @@ class _RegisterState extends State<Register> {
   registration() async {
     if (password == confirm_Password) {
       try {
-        await FirebaseAuth.instance
+        UserCredential userCredential = await FirebaseAuth.instance
             .createUserWithEmailAndPassword(email: email, password: password);
-            
-      } catch (e) {}
+        print(userCredential);
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            backgroundColor: Colors.redAccent,
+            content: Text(
+              "New user register successfully",
+              style: TextStyle(fontSize: 20.0),
+            ),
+          ),
+        );
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => Login(),
+          ),
+        );
+      } on FirebaseAuthException catch (e) {
+        if (e.code == 'weak-password') {
+          print("Password is too weak");
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              backgroundColor: Colors.orangeAccent,
+              content: Text(
+                "Password is too weak",
+                style: TextStyle(
+                  fontSize: 18.0,
+                  color: Colors.black,
+                ),
+              ),
+            ),
+          );
+        } else if (e.code == 'email-already-in-use') {
+          print("Account already exists");
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              backgroundColor: Colors.orangeAccent,
+              content: Text(
+                "Account already exists",
+                style: TextStyle(
+                  fontSize: 18.0,
+                  color: Colors.black,
+                ),
+              ),
+            ),
+          );
+        }
+      }
     } else {
       print("Password and confirm password doesn't match");
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          backgroundColor: Colors.orangeAccent,
+          content: Text(
+            "Password and confirm password doesn't match ",
+            style: TextStyle(
+              fontSize: 16.0,
+              color: Colors.black,
+            ),
+          ),
+        ),
+      );
     }
   }
 
