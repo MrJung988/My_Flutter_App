@@ -1,5 +1,7 @@
 import 'package:draggable_fab/draggable_fab.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:my_flutter_first_app/auth/login.dart';
 import 'package:my_flutter_first_app/home/change_password.dart';
 import 'package:my_flutter_first_app/home/dashboard.dart';
 import 'package:my_flutter_first_app/home/profile.dart';
@@ -115,9 +117,15 @@ class _HomeState extends State<Home> {
             ListTile(
               leading: Icon(Icons.logout),
               title: Text('Logout'),
-              onTap: () {
-                Navigator.of(context).pushNamedAndRemoveUntil(
-                    '/login', (Route<dynamic> route) => false);
+              onTap: () async {
+                await FirebaseAuth.instance.signOut();
+                print("Logged out successfully");
+                Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => Login(),
+                    ),
+                    (route) => false);
               },
             ),
           ],
