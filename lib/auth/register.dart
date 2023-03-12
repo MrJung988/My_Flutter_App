@@ -54,7 +54,7 @@ class _RegisterState extends State<Register> {
           SnackBar(
             backgroundColor: Colors.redAccent,
             content: Text(
-              "New user register successfully",
+              "New user register successfully. Please login..",
               style: TextStyle(fontSize: 20.0),
             ),
           ),
@@ -62,7 +62,7 @@ class _RegisterState extends State<Register> {
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (context) => Home(),
+            builder: (context) => Login(),
           ),
         );
       } on FirebaseAuthException catch (e) {
