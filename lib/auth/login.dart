@@ -1,4 +1,6 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:my_flutter_first_app/home/home.dart';
 import 'package:my_flutter_first_app/widgets/PrimaryTextForm.dart';
 
 class Login extends StatefulWidget {
@@ -19,9 +21,24 @@ class _LoginState extends State<Login> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
-  userLogin() {
-    Navigator.of(context)
-        .pushNamedAndRemoveUntil('/home', (Route<dynamic> route) => false);
+  userLogin() async {
+    try {
+      await FirebaseAuth.instance
+          .signInWithEmailAndPassword(email: email, password: password);
+      print("User has logged in successfully");
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) => Home(),
+        ),
+      );
+    } on FirebaseException catch (e) {
+      if (e.code == "user-not-found") {
+        print("User not found");
+      } else if (e.code == "wrong-password") {
+        print("Credential does not match");
+      }
+    }
   }
 
   @override
