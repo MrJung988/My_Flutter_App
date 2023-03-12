@@ -1,6 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:my_flutter_first_app/auth/login.dart';
+import 'package:my_flutter_first_app/home/dashboard.dart';
+import 'package:my_flutter_first_app/home/home.dart';
 import 'package:my_flutter_first_app/widgets/PrimaryTextForm.dart';
 
 class Register extends StatefulWidget {
@@ -60,7 +62,7 @@ class _RegisterState extends State<Register> {
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (context) => Login(),
+            builder: (context) => Home(),
           ),
         );
       } on FirebaseAuthException catch (e) {
