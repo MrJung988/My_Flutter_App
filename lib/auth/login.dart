@@ -26,6 +26,17 @@ class _LoginState extends State<Login> {
       await FirebaseAuth.instance
           .signInWithEmailAndPassword(email: email, password: password);
       print("User has logged in successfully");
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          backgroundColor: Colors.greenAccent,
+          content: Text(
+            "User has logged in successfully",
+            style: TextStyle(
+              fontSize: 18.0,
+            ),
+          ),
+        ),
+      );
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
@@ -35,8 +46,32 @@ class _LoginState extends State<Login> {
     } on FirebaseException catch (e) {
       if (e.code == "user-not-found") {
         print("User not found");
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            backgroundColor: Colors.redAccent,
+            content: Text(
+              "User not found",
+              style: TextStyle(
+                fontSize: 18.0,
+                color: Colors.black,
+              ),
+            ),
+          ),
+        );
       } else if (e.code == "wrong-password") {
         print("Credential does not match");
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            backgroundColor: Colors.redAccent,
+            content: Text(
+              "Credential does not match",
+              style: TextStyle(
+                fontSize: 18.0,
+                color: Colors.black,
+              ),
+            ),
+          ),
+        );
       }
     }
   }

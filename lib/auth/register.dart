@@ -50,7 +50,7 @@ class _RegisterState extends State<Register> {
         print(userCredential);
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            backgroundColor: Colors.redAccent,
+            backgroundColor: Colors.greenAccent,
             content: Text(
               "New user register successfully. Please login..",
               style: TextStyle(fontSize: 20.0),
